@@ -4,13 +4,15 @@ block content
   h1= title
   p A basic calculator.
   // Top row
-  div(class='total')
-    input(class='form-control' type='text' placeholder='0' readonly)
+  div(id='total') a
+    //div(style={'position': 'absolute', 'top': '0', 'right': '0', 'width': '100px', 'text-align': 'right'})
+      //p a
+    //input(class='form-control' type='text' placeholder='0' readonly)
   // 5th row
   div(class='btn-calc btn-func') AC
   div(class='btn-calc btn-func') +/-
   div(class='btn-calc btn-func') %
-  div(class='btn-calc btn-op') %
+  div(class='btn-calc btn-op') /
   br
   // 4th row
   div(class='btn-calc btn-num') 7

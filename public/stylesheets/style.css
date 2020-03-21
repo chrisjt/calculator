@@ -1,14 +1,13 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
-}
-.total {
-  height: 40px;
-  width: 160px;
+#total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border: 1px solid black;
+  height: 80px;
+  width: 320px;
+
+  font-size: xx-large;
 }
 /* https://stackoverflow.com/a/5703632 */
 .btn-calc {
@@ -17,22 +16,21 @@ a {
   align-items: center;
   margin: 0 auto;
   border: 1px solid black;
-  height: 40px;
+  height: 80px;
+  width: 80px;
+
+  font-size: xx-large;
 }
 .btn-zero {
   background-color: gray;
-  height: 40px;
-  width: 80px;
+  width: 160px;
 }
 .btn-func {
   background-color: lightgray;
-  width: 40px;
 }
 .btn-op {
   background-color: orange;
-  width: 40px;
 }
 .btn-num {
   background-color: gray;
-  width: 40px;
 }
