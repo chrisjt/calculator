@@ -6,3 +6,36 @@ body {
 a {
   color: #00B7FF;
 }
+.total {
+  height: 40px;
+  width: 160px;
+}
+/* https://stackoverflow.com/a/5703632 */
+.btn-calc {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+}
+.btn-zero {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border: 1px solid black;
+  height: 40px;
+  width: 80px;
+  background-color: gray;
+}
+.btn-func {
+  background-color: lightgray;
+}
+.btn-op {
+  background-color: orange;
+}
+.btn-num {
+  background-color: gray;
+}

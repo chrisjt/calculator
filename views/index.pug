@@ -2,4 +2,36 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p A basic calculator.
+  // Top row
+  div(class='total')
+    input(class='form-control' type='text' placeholder='0' readonly)
+  // 5th row
+  div(class='btn-calc btn-func') AC
+  div(class='btn-calc btn-func') +/-
+  div(class='btn-calc btn-func') %
+  div(class='btn-calc btn-op') %
+  br
+  // 4th row
+  div(class='btn-calc btn-num') 7
+  div(class='btn-calc btn-num') 8
+  div(class='btn-calc btn-num') 9
+  div(class='btn-calc btn-op') X
+  br
+  // 3rd row
+  div(class='btn-calc btn-num') 4
+  div(class='btn-calc btn-num') 5
+  div(class='btn-calc btn-num') 6
+  div(class='btn-calc btn-op') -
+  br
+  // 2nd row
+  div(class='btn-calc btn-num') 1
+  div(class='btn-calc btn-num') 2
+  div(class='btn-calc btn-num') 3
+  div(class='btn-calc btn-op') +
+  br
+  // Bottom row
+  div(class='btn-zero') 0
+  div(class='btn-calc btn-num') .
+  div(class='btn-calc btn-op') =
+  br
