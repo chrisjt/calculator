@@ -4,8 +4,8 @@
   justify-content: flex-end;
   align-items: flex-end;
   border: 1px solid black;
-  height: 80px;
-  width: 320px;
+  height: 60px;
+  width: 240px;
 
   font-size: xx-large;
 }
@@ -16,14 +16,14 @@
   align-items: center;
   margin: 0 auto;
   border: 1px solid black;
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
 
   font-size: xx-large;
 }
 .btn-zero {
   background-color: gray;
-  width: 160px;
+  width: 120px;
 }
 .btn-func {
   background-color: lightgray;
