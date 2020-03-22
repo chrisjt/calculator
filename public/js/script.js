@@ -5,11 +5,34 @@ $( document ).ready(function() {
 var calcOutPrev = 0;
 var calcOut = 0;
 var btnClearClicked = false;
+var operator = null;
 
 // Function to change output on click.
 function updateCalc() {
   console.log("updateCalc() called.")
+  if(operator != true){
+    switch(operator) {
+      case "+":
+        
+        calcOut = calcOutPrev + calcOut;
+        break;
+    }
+    operator = null;
+  }
   $("#out").text(calcOut);
+
+}
+// Function to update output based on num input.
+function enterNum(num) {
+  if(calcOut == 0) {
+    calcOut = num;
+    updateCalc();
+  }
+  else {
+    var temp = calcOut + num.toString();
+    calcOut = parseFloat(temp);
+    updateCalc();
+  }
 }
 // Click functions.
 $(document).ready(function(){
@@ -32,6 +55,9 @@ $(document).ready(function(){
   $("#btnMinus").click(function() {
   });
   $("#btnPlus").click(function() {
+
+    calcUpdate();
+    operator = "+"
   });
   $("#btnEqualsr").click(function() {
   });
@@ -41,53 +67,43 @@ $(document).ready(function(){
     switch(id) {
       case "btnNine":
         console.log("Nine pressed.")
-        calcOut = 9;
-        updateCalc();
+        enterNum(9);
         break;
       case "btnEight":
         console.log("Eight pressed.")
-        calcOut = 8;
-        updateCalc();
+        enterNum(8);
         break;
       case "btnSeven":
         console.log("Seven pressed.")
-        calcOut = 7;
-        updateCalc();
+        enterNum(7);
         break;
       case "btnSix":
         console.log("Six pressed.")
-        calcOut = 6;
-        updateCalc();
+        enterNum(6);
         break;
       case "btnFive":
         console.log("Five pressed.")
-        calcOut = 5;
-        updateCalc();
+        enterNum(5);
         break;
       case "btnFour":
         console.log("Four pressed.")
-        calcOut = 4;
-        updateCalc();
+        enterNum(4);
         break;
       case "btnThree":
         console.log("Three pressed.")
-        calcOut = 3;
-        updateCalc();
+        enterNum(3);
         break;
       case "btnTwo":
         console.log("Two pressed.")
-        calcOut = 2;
-        updateCalc();
+        enterNum(2);
         break;
       case "btnOne":
         console.log("One pressed.")
-        calcOut = 1;
-        updateCalc();
+        enterNum(1);
         break;
       case "btnZero":
         console.log("Zero pressed.")
-        calcOut = 0;
-        updateCalc();
+        enterNum(0);
         break;
     }
   });
