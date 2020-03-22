@@ -1,8 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p A basic calculator.
+  div.row
+    div.col-sm
+      h1= title
+      p A basic calculator.
   // Top row
   div(id='total') a
     //div(style={'position': 'absolute', 'top': '0', 'right': '0', 'width': '100px', 'text-align': 'right'})
