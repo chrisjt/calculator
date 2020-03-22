@@ -3,27 +3,31 @@ $( document ).ready(function() {
 });
 
 var calcOutPrev = 0;
+var calcOutOperator = 0;
 var calcOut = 0;
-var btnClearClicked = false;
+var btnClearStatusAC = false;
 var operator = null;
+var operatorApplies = false;
+var equalsHasHappened = false;
 
-// Function to change output on click.
+// Function to change output.
 function updateCalc() {
-  console.log("updateCalc() called.")
-  if(operator != true){
-    switch(operator) {
-      case "+":
-        
-        calcOut = calcOutPrev + calcOut;
-        break;
-    }
-    operator = null;
-  }
   $("#out").text(calcOut);
-
 }
 // Function to update output based on num input.
 function enterNum(num) {
+  console.log("\n");
+  console.log("enterNum() is called: " + num);
+  if(operatorApplies == true) {
+    console.log("operatorApplies is true");
+    console.log("calcOut: " + calcOut);
+    console.log("calcOutPrev: " + calcOutPrev);
+    console.log("calcOutOperator: " + calcOutOperator);
+    calcOutPrev = calcOut;
+    calcOut = 0;
+    clearOperators();
+    operatorApplies = false;
+  }
   if(calcOut == 0) {
     calcOut = num;
     updateCalc();
@@ -34,12 +38,68 @@ function enterNum(num) {
     updateCalc();
   }
 }
+// Function to update output based on operator.
+function applyOperator() {
+  console.log("\n");
+  console.log("applyOperator() is called.");
+  if(operatorApplies == false && operator != null){
+    console.log("operatorApplies is false.");
+    console.log("calcOut: " + calcOut);
+    console.log("calcOutPrev: " + calcOutPrev);
+    console.log("calcOutOperator: " + calcOutOperator);    calcOutOperator = calcOut;
+    switch(operator) {
+      case "+":
+        calcOut = calcOutPrev + calcOut;
+        break;
+      case "-":
+        calcOut = calcOutPrev - calcOut;
+        break;
+    }
+    if(operator != null) {
+      equalsHasHappened = true;
+    }
+
+  }
+  updateCalc();
+}
+// Function to update output based on existing operator.
+function applyEquals() {
+  console.log("\n");
+  console.log("applyEquals() is called.");
+  if(equalsHasHappened == false) {
+    console.log("equalsHasHappened is false.");
+    applyOperator();
+  }
+  else {
+    console.log("equalsHasHappened is true.");
+    console.log("calcOut: " + calcOut);
+    console.log("calcOutPrev" + calcOutPrev);
+    console.log("calcOutOperator: " + calcOutOperator);
+    switch(operator) {
+      case "+":
+        calcOut = calcOut + calcOutOperator;
+        break;
+      case "-":
+        calcOut = calcOut - calcOutOperator;
+        break;
+    }
+    updateCalc();
+  }
+}
+// Clear operators
+function clearOperators() {
+  $("#btnPlus").css("opacity", "1");
+  $("#btnMinus").css("opacity", "1");
+  operator = null;
+}
 // Click functions.
 $(document).ready(function(){
   $("#btnClear").click(function() {
     console.log("btnClear clicked.")
+    operator = null;
+    operatorApplies = false;
     calcOut = 0;
-    if(btnClearClicked == false) {
+    if(btnClearStatusAC == false) {
 
     }
     updateCalc();
@@ -53,56 +113,53 @@ $(document).ready(function(){
   $("#btnMulti").click(function() {
   });
   $("#btnMinus").click(function() {
+    clearOperators();
+    $("#btnMinus").css("opacity", "0.6");
+    applyOperator();
+    operator = "-";
+    operatorApplies = true;
   });
   $("#btnPlus").click(function() {
-
-    calcUpdate();
-    operator = "+"
+    clearOperators();
+    $("#btnPlus").css("opacity", "0.6");
+    applyOperator();
+    operator = "+";
+    operatorApplies = true;
   });
-  $("#btnEqualsr").click(function() {
+  $("#btnEquals").click(function() {
+    applyEquals();
   });
   $(".btn-calc").click(function() {
-    console.log(".btn-calc clicked.")
     var id = this.id;
     switch(id) {
       case "btnNine":
-        console.log("Nine pressed.")
         enterNum(9);
         break;
       case "btnEight":
-        console.log("Eight pressed.")
         enterNum(8);
         break;
       case "btnSeven":
-        console.log("Seven pressed.")
         enterNum(7);
         break;
       case "btnSix":
-        console.log("Six pressed.")
         enterNum(6);
         break;
       case "btnFive":
-        console.log("Five pressed.")
         enterNum(5);
         break;
       case "btnFour":
-        console.log("Four pressed.")
         enterNum(4);
         break;
       case "btnThree":
-        console.log("Three pressed.")
         enterNum(3);
         break;
       case "btnTwo":
-        console.log("Two pressed.")
         enterNum(2);
         break;
       case "btnOne":
-        console.log("One pressed.")
         enterNum(1);
         break;
       case "btnZero":
-        console.log("Zero pressed.")
         enterNum(0);
         break;
     }
