@@ -24,7 +24,7 @@
   font-size: xx-large;
 }
 .btn-calc:hover {opacity: 0.8}
-.btn-calc:active {opacity: 0.4}
+.btn-calc:active {opacity: 0.6}
 .btn-zero {
   background-color: gray;
   width: 120px;
