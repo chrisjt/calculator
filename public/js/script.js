@@ -55,6 +55,12 @@ function applyOperator() {
       case "-":
         calcOut = calcOutPrev - calcOut;
         break;
+      case "*":
+        calcOut = calcOutPrev * calcOut;
+        break;
+      case "/":
+        calcOut = calcOutPrev / calcOut;
+        break;
     }
     equalsHasHappened = true;
 
@@ -81,6 +87,12 @@ function applyEquals() {
       case "-":
         calcOut = calcOut - calcOutOperator;
         break;
+      case "*":
+        calcOut = calcOutPrev * calcOut;
+        break;
+      case "/":
+        calcOut = calcOutPrev / calcOut;
+        break;
     }
     updateCalc();
   }
@@ -89,6 +101,8 @@ function applyEquals() {
 function clearOperators() {
   $("#btnPlus").css("opacity", "1");
   $("#btnMinus").css("opacity", "1");
+  $("#btnMulti").css("opacity", "1");
+  $("#btnDivide").css("opacity", "1");
 }
 // Click functions.
 $(document).ready(function(){
@@ -108,8 +122,18 @@ $(document).ready(function(){
   $("#btnPercent").click(function() {
   });
   $("#btnDivide").click(function() {
+    clearOperators();
+    $("#btnDivide").css("opacity", "0.6");
+    applyOperator();
+    operator = "/";
+    operatorApplies = true;
   });
   $("#btnMulti").click(function() {
+    clearOperators();
+    $("#btnMulti").css("opacity", "0.6");
+    applyOperator();
+    operator = "*";
+    operatorApplies = true;
   });
   $("#btnMinus").click(function() {
     clearOperators();
