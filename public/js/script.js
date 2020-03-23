@@ -46,7 +46,8 @@ function applyOperator() {
     console.log("operatorApplies is false.");
     console.log("calcOut: " + calcOut);
     console.log("calcOutPrev: " + calcOutPrev);
-    console.log("calcOutOperator: " + calcOutOperator);    calcOutOperator = calcOut;
+    console.log("calcOutOperator: " + calcOutOperator);
+    calcOutOperator = calcOut;
     switch(operator) {
       case "+":
         calcOut = calcOutPrev + calcOut;
@@ -55,9 +56,7 @@ function applyOperator() {
         calcOut = calcOutPrev - calcOut;
         break;
     }
-    if(operator != null) {
-      equalsHasHappened = true;
-    }
+    equalsHasHappened = true;
 
   }
   updateCalc();
@@ -90,12 +89,12 @@ function applyEquals() {
 function clearOperators() {
   $("#btnPlus").css("opacity", "1");
   $("#btnMinus").css("opacity", "1");
-  operator = null;
 }
 // Click functions.
 $(document).ready(function(){
   $("#btnClear").click(function() {
     console.log("btnClear clicked.")
+    clearOperators();
     operator = null;
     operatorApplies = false;
     calcOut = 0;
